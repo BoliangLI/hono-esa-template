@@ -1,17 +1,17 @@
 import { Hono } from 'hono';
 import ssr from './ssr';
 
-const app = new Hono().basePath('/');
+const app = new Hono().basePath('/er');
 
 app.route('/ssr', ssr);
 
 
-async function handleRequest(request: Request) {
+async function handleRequest(request) {
   return app.fetch(request);
 }
 
 export default {
-  async fetch(request: Request) {
+  async fetch(request) {
     return handleRequest(request);
   }
 };

@@ -5,12 +5,12 @@ const app = new Hono()
 
 app.get('*', renderer)
 
-app.get('/', (c) => c.render('Hello, World!'))
+app.get('/', (c) => c.render('Hello, Hono ESA!'))
 
 app.get('/about', (c) => {
   return c.render(
     <>
-      <title>Hono SSG Page</title>Hello!
+      <title>Hono SSG Page</title>This is Hono SSG Page
     </>
   )
 })
