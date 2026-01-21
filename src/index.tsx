@@ -1,18 +1,25 @@
 import { Hono } from "hono"
-import { renderer } from "./renderer"
 
 const app = new Hono()
 
-app.get('*', renderer)
+
+app.use('/' , async(c,next)=>{
+  c.setRenderer((content)=>{
+    return c.html(
+      <html>
+        <head>
+          <link href="/static/style.css" rel="stylesheet" />
+        </head>
+        <body>
+          {content}
+        </body>
+      </html>
+    )
+  })
+  await next()
+})
 
 app.get('/', (c) => c.render('Hello, Hono ESA!'))
 
-app.get('/about', (c) => {
-  return c.render(
-    <>
-      <title>Hono SSG Page</title>This is Hono SSG Page
-    </>
-  )
-})
 
 export default app

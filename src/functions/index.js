@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
 import ssr from './ssr';
 
-const app = new Hono().basePath('/er');
+const app = new Hono().basePath('/');
 
 app.route('/ssr', ssr);
 
