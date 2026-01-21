@@ -3,7 +3,7 @@ import { Hono } from "hono"
 const app = new Hono()
 
 
-app.use('/' , async(c,next)=>{
+app.use('/ssg' , async(c,next)=>{
   c.setRenderer((content)=>{
     return c.html(
       <html>
@@ -19,7 +19,7 @@ app.use('/' , async(c,next)=>{
   await next()
 })
 
-app.get('/', (c) => c.render('Hello, Hono ESA!'))
+app.get('/ssg', (c) => c.render('Hello, Hono ESA!'))
 
 
 export default app
