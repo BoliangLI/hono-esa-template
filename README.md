@@ -29,8 +29,11 @@ hono-esa-template/
 │       └── style.css
 ├── src/               # Source code directory
 │   ├── functions/     # ESA Edge Functions
+│   │   ├── components/    # Components directory
+│   │   │   └── SSRPage.jsx # SSR page component
 │   │   ├── index.js   # Function entry point
-│   │   └── ssr.js     # SSR test route
+│   │   ├── api.js     # API routes
+│   │   └── ssr.js     # SSR routes
 │   └── index.tsx      # Vite SSG page entry
 ├── esa.jsonc          # ESA configuration file
 ├── package.json       # Project configuration
@@ -75,6 +78,17 @@ npm run preview
 - **Features**: Supports dynamic rendering based on user parameters, with server-side rendering (SSR) support
 - **Example**: 
   - `/ssr/test` - Renders "Hello test - This is SSR Page!"
+
+### API Endpoints (`/api/*`)
+
+- **Path**: `/api/*`
+- **Type**: RESTful API
+- **Handler**: Processed by ESA Edge Functions
+- **Features**: Returns JSON format responses for GET and POST requests
+- **Endpoints**:
+  - `GET /api/example` - Returns example data
+  - `GET /api/example/:id` - Returns resource by ID
+  - `POST /api/example` - Accepts JSON body and returns processed data
 
 ## ⚙️ Configuration
 

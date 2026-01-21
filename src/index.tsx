@@ -44,8 +44,11 @@ hono-esa-template/
 │       └── style.css
 ├── src/               # Source code directory
 │   ├── functions/     # ESA Edge Functions
+│   │   ├── components/    # Components directory
+│   │   │   └── SSRPage.jsx # SSR page component
 │   │   ├── index.js   # Function entry point
-│   │   └── ssr.js     # SSR test route
+│   │   ├── api.js     # API routes
+│   │   └── ssr.js     # SSR routes
 │   └── index.tsx      # Vite SSG page entry
 ├── esa.jsonc          # ESA configuration file
 ├── package.json       # Project configuration
@@ -63,8 +66,8 @@ hono-esa-template/
       color: '#333'
     }}>
       <header style={{
-        marginBottom: '3rem',
-        paddingBottom: '2rem',
+        marginBottom: '1.5rem',
+        paddingBottom: '1.5rem',
         borderBottom: '2px solid #e0e0e0'
       }}>
         <h1 style={{
@@ -80,33 +83,10 @@ hono-esa-template/
         }}>A modern template project based on Hono + Vite + ESA Pages</p>
       </header>
 
-      {/* <div style={{
-        marginBottom: '2rem',
-        padding: '1rem 1.5rem',
-        backgroundColor: '#ecfdf5',
-        border: '1px solid #10b981',
-        borderRadius: '8px',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.75rem'
-      }}>
-        <span style={{
-          fontSize: '1.5rem'
-        }}>✨</span>
-        <p style={{
-          margin: '0',
-          fontSize: '1rem',
-          color: '#065f46',
-          fontWeight: '500'
-        }}>
-          <strong>当前页面为 Vite SSG 构建</strong> - 此页面通过 Vite 静态站点生成（SSG）技术预渲染生成
-        </p>
-      </div> */}
-
 <section style={{
         marginBottom: '3rem',
         backgroundColor: '#f8f9fa',
-        padding: '2rem',
+        padding: '1.5rem',
         borderRadius: '8px',
         border: '1px solid #e0e0e0'
       }}>
@@ -172,26 +152,44 @@ hono-esa-template/
             <div style={{
               display: 'flex',
               alignItems: 'center',
+              justifyContent: 'space-between',
               gap: '0.75rem',
               marginBottom: '0.5rem'
             }}>
-              <code style={{
-                padding: '0.25rem 0.75rem',
-                backgroundColor: '#f3f4f6',
-                borderRadius: '4px',
-                fontSize: '1rem',
-                fontWeight: '600',
-                color: '#1f2937',
-                fontFamily: '"Fira Code", "Consolas", "Monaco", monospace'
-              }}>/ssr/*</code>
-              <span style={{
-                fontSize: '0.875rem',
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem'
+              }}>
+                <code style={{
+                  padding: '0.25rem 0.75rem',
+                  backgroundColor: '#f3f4f6',
+                  borderRadius: '4px',
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  color: '#1f2937',
+                  fontFamily: '"Fira Code", "Consolas", "Monaco", monospace'
+                }}>/ssr/*</code>
+                <span style={{
+                  fontSize: '0.875rem',
+                  color: '#2563eb',
+                  fontWeight: '600',
+                  backgroundColor: '#eff6ff',
+                  padding: '0.25rem 0.5rem',
+                  borderRadius: '4px'
+                }}>Dynamic Page</span>
+              </div>
+              <a href="/ssr/test" style={{
                 color: '#2563eb',
+                textDecoration: 'none',
+                fontSize: '0.875rem',
                 fontWeight: '600',
-                backgroundColor: '#eff6ff',
-                padding: '0.25rem 0.5rem',
-                borderRadius: '4px'
-              }}>Dynamic Page</span>
+                transition: 'all 0.2s ease',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap'
+              }}>
+                Try SSR Page →
+              </a>
             </div>
             <p style={{
               margin: '0',
@@ -214,8 +212,110 @@ hono-esa-template/
                 marginLeft: '0.5rem',
                 color: '#2563eb',
                 fontFamily: '"Fira Code", "Consolas", "Monaco", monospace'
-              }}>/ssr/test</code> - Renders "Hello test - This is SSR Page!"
+              }}>/ssr/test</code> - Renders "Hello, test!"
             </div>
+            <style>{`
+              a[href="/ssr/test"]:hover {
+                color: #1d4ed8 !important;
+                text-decoration: underline;
+              }
+            `}</style>
+          </div>
+
+          <div style={{
+            padding: '1.5rem',
+            backgroundColor: '#fff',
+            borderRadius: '6px',
+            border: '1px solid #d1d5db',
+            borderLeft: '4px solid #f59e0b'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '0.75rem',
+              marginBottom: '0.5rem'
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem'
+              }}>
+                <code style={{
+                  padding: '0.25rem 0.75rem',
+                  backgroundColor: '#f3f4f6',
+                  borderRadius: '4px',
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  color: '#1f2937',
+                  fontFamily: '"Fira Code", "Consolas", "Monaco", monospace'
+                }}>/api/*</code>
+                <span style={{
+                  fontSize: '0.875rem',
+                  color: '#f59e0b',
+                  fontWeight: '600',
+                  backgroundColor: '#fffbeb',
+                  padding: '0.25rem 0.5rem',
+                  borderRadius: '4px'
+                }}>API Endpoint</span>
+              </div>
+              <a href="/api/example" style={{
+                color: '#f59e0b',
+                textDecoration: 'none',
+                fontSize: '0.875rem',
+                fontWeight: '600',
+                transition: 'all 0.2s ease',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap'
+              }}>
+                Try API Endpoint →
+              </a>
+            </div>
+            <p style={{
+              margin: '0',
+              color: '#4b5563',
+              fontSize: '1rem',
+              lineHeight: '1.6'
+            }}>
+              RESTful API endpoints processed by <strong>ESA Edge Functions</strong>. Returns JSON format responses for GET and POST requests. <strong>All endpoints support CORS.</strong>
+            </p>
+            <div style={{
+              marginTop: '0.75rem',
+              padding: '0.75rem',
+              backgroundColor: '#f9fafb',
+              borderRadius: '4px',
+              fontSize: '0.875rem',
+              color: '#6b7280'
+            }}>
+              <strong>Examples:</strong>
+              <div style={{ marginTop: '0.5rem' }}>
+                <code style={{
+                  marginLeft: '0.5rem',
+                  color: '#2563eb',
+                  fontFamily: '"Fira Code", "Consolas", "Monaco", monospace'
+                }}>GET /api/example</code> - Returns example data
+              </div>
+              <div style={{ marginTop: '0.25rem' }}>
+                <code style={{
+                  marginLeft: '0.5rem',
+                  color: '#2563eb',
+                  fontFamily: '"Fira Code", "Consolas", "Monaco", monospace'
+                }}>GET /api/example/:id</code> - Returns resource by ID
+              </div>
+              <div style={{ marginTop: '0.25rem' }}>
+                <code style={{
+                  marginLeft: '0.5rem',
+                  color: '#2563eb',
+                  fontFamily: '"Fira Code", "Consolas", "Monaco", monospace'
+                }}>POST /api/example</code> - Accepts JSON body and returns processed data
+              </div>
+            </div>
+            <style>{`
+              a[href="/api/example"]:hover {
+                color: #d97706 !important;
+                text-decoration: underline;
+              }
+            `}</style>
           </div>
         </div>
       </section>
