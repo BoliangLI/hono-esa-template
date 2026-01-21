@@ -374,6 +374,90 @@ hono-esa-template/
       </section>
 
       <section style={{
+        marginTop: '3rem',
+        marginBottom: '3rem',
+        backgroundColor: '#f8f9fa',
+        padding: '2rem',
+        borderRadius: '8px',
+        border: '1px solid #e0e0e0'
+      }}>
+        <h2 style={{
+          fontSize: '1.8rem',
+          marginTop: '0',
+          marginBottom: '1rem',
+          color: '#1a1a1a'
+        }}>🧪 Test API with cURL</h2>
+        <p style={{
+          margin: '0 0 1rem 0',
+          color: '#4b5563',
+          fontSize: '1rem',
+          lineHeight: '1.6'
+        }}>
+          You can test the POST method using the following cURL command:
+        </p>
+        <pre style={{
+          backgroundColor: '#1e1e1e',
+          color: '#d4d4d4',
+          padding: '1.5rem',
+          borderRadius: '6px',
+          overflow: 'auto',
+          fontSize: '0.9rem',
+          lineHeight: '1.5',
+          fontFamily: '"Fira Code", "Consolas", "Monaco", monospace',
+          margin: '0 0 1.5rem 0'
+        }}>{`curl -X POST https://your-domain/api/example -H "Content-Type: application/json" -d '{"testKey":"testValue"}'`}</pre>
+        
+        <p style={{
+          margin: '0 0 0.75rem 0',
+          color: '#4b5563',
+          fontSize: '1rem',
+          lineHeight: '1.6',
+          fontWeight: '600'
+        }}>
+          Example Response:
+        </p>
+        <pre style={{
+          backgroundColor: '#1e1e1e',
+          color: '#d4d4d4',
+          padding: '1.5rem',
+          borderRadius: '6px',
+          overflow: 'auto',
+          fontSize: '0.9rem',
+          lineHeight: '1.5',
+          fontFamily: '"Fira Code", "Consolas", "Monaco", monospace',
+          margin: '0'
+        }}>{`{
+  "success": true,
+  "message": "Data received successfully",
+  "method": "POST",
+  "timestamp": "2026-01-21T08:41:24.485Z",
+  "receivedData": {
+    "testKey": "testValue"
+  },
+  "data": {
+    "id": 1768984884485,
+    "testKey": "testValue",
+    "createdAt": "2026-01-21T08:41:24.485Z"
+  }
+}`}</pre>
+        
+        <p style={{
+          margin: '1rem 0 0 0',
+          color: '#6b7280',
+          fontSize: '0.875rem',
+          fontStyle: 'italic'
+        }}>
+          Replace <code style={{
+            backgroundColor: '#f3f4f6',
+            padding: '0.125rem 0.375rem',
+            borderRadius: '3px',
+            fontFamily: '"Fira Code", "Consolas", "Monaco", monospace',
+            fontSize: '0.875rem'
+          }}>your-domain</code> with your actual domain name.
+        </p>
+      </section>
+
+      <section style={{
         textAlign: 'center',
         padding: '2rem',
         backgroundColor: '#f0f9ff',
